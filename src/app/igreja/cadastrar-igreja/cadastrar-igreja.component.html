@@ -1,0 +1,75 @@
+<div class="container espaco-baixo">
+  <div class="titulo">
+    <h1>{{ editando ? 'Edição de' : 'Nova' }} Igreja</h1>
+  </div>
+
+  <form #f="ngForm">
+    <div class="col-md-8">
+      <mat-form-field class="col-md-8">
+          <input matInput placeholder="Nome" [(ngModel)]="igreja.nome" name="nome" required>
+      </mat-form-field>    
+    </div>
+
+    <div class="col-md-10">
+      <mat-form-field class="col-md-4">
+          <input matInput placeholder="Líder Principal" [(ngModel)]="igreja.liderPrincipal" name="liderPrincipal" required>
+      </mat-form-field>    
+      <mat-form-field class="col-md-6">
+          <input matInput placeholder="Email" [(ngModel)]="igreja.email" name="email" required>
+      </mat-form-field>    
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field class="col-md-6">
+          <input matInput placeholder="CNPJ" [(ngModel)]="igreja.cnpj" name="cnpj" required>
+      </mat-form-field>    
+    </div>
+
+    <div class="col-md-8">
+      <mat-form-field class="col-md-4">
+          <input matInput placeholder="Celular" [(ngModel)]="igreja.celular" name="celular" required>
+      </mat-form-field>    
+      <mat-form-field class="col-md-4">
+          <input matInput placeholder="Telefone" [(ngModel)]="igreja.telefone" name="telefone">
+      </mat-form-field>    
+    </div>
+
+    <div class="col-md-10">
+      <mat-form-field class="col-md-6">
+          <input matInput placeholder="Cidade" [(ngModel)]="igreja.cidade" name="cidade" required>
+      </mat-form-field>    
+      <mat-form-field class="col-md-4">
+          <input matInput placeholder="Estado" [(ngModel)]="igreja.estado" name="estado" required>
+      </mat-form-field>    
+    </div>
+
+    <div class="col-md-10">
+      <mat-form-field class="col-md-4">
+          <input matInput placeholder="CEP" [(ngModel)]="igreja.cep" name="cep"
+          type="text" mask="99.999-999" required>
+      </mat-form-field>    
+      <mat-form-field class="col-md-6">
+          <input matInput placeholder="Bairro" [(ngModel)]="igreja.bairro" name="bairro" required>
+      </mat-form-field>    
+    </div>
+
+    <div class="col-md-10">
+      <mat-form-field class="col-md-6">
+          <input matInput placeholder="Logradouro" [(ngModel)]="igreja.logradouro" name="logradouro" required>
+      </mat-form-field>    
+      <mat-form-field class="col-md-3">
+          <input matInput placeholder="Número" [(ngModel)]="igreja.numero" name="numero" required>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+        Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+      </button>
+
+      <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/igrejas">Voltar para Pesquisa</a>
+    </div>
+  </form>
+
+
+</div>

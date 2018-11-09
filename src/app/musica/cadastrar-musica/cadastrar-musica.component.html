@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="titulo">
+      <h1>{{ editando ? 'Edição de' : 'Nova' }} Música</h1>
+    </div>
+
+    <form #f="ngForm">
+      <div class="col-md-6">
+        <mat-form-field class="input-full-width">
+            <input matInput placeholder="Descrição" [(ngModel)]="musica.descricao" name="descricao" required>
+        </mat-form-field>    
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field class="input-full-width">
+            <input matInput placeholder="Nome Original" [(ngModel)]="musica.nomeOriginal" name="nomeOrginal" required>
+        </mat-form-field>    
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field class="input-full-width">
+            <input matInput placeholder="Banda" [(ngModel)]="musica.banda" name="banda" required>
+        </mat-form-field>    
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field class="input-full-width">
+            <input matInput placeholder="Tom" [(ngModel)]="musica.tom" name="tom" required>
+        </mat-form-field>    
+      </div>
+
+      <div>
+        <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+          Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+        </button>
+
+        <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/musicas">Voltar para Pesquisa</a>
+      </div>
+    </form>
+
+
+</div>

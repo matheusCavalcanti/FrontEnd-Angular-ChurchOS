@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="titulo">
+    <h1>{{ editando ? 'Edição de' : 'Novo' }} Ministro</h1>
+  </div>
+
+  <form #f="ngForm">
+    
+    <div class="col-md-8">
+      <mat-form-field class="col-md-8">
+        <mat-select placeholder="Pessoa (Selecione uma Pessoa)" [(ngModel)]="ministro.pessoa.id" name="pessoa">
+          <mat-option *ngFor="let pessoa of pessoas" [value]="pessoa.id">
+            {{pessoa.nome}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div class="col-md-6" style="margin-bottom: 25px;">
+        <mat-form-field class="col-md-6">
+            <mat-select placeholder="Tipo de Ministério (Selecione)" [(ngModel)]="ministro.tipoMinisterio" name="tipoMinisterio">
+                <mat-option *ngFor="let tipo of tiposM" [value]="tipo.value">
+                  {{tipo.view}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>        
+    </div>
+
+    <div>
+      <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+        Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+      </button>
+
+      <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/ministros">Voltar para Pesquisa</a>
+    </div>
+  </form>
+
+
+</div>

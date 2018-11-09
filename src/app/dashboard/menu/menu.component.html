@@ -1,0 +1,63 @@
+<mat-toolbar color="primary" class="layout">
+    <span>ChurchOS</span>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Help</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" class="fofura" style="margin-left: 15px">
+      <mat-icon>assessment</mat-icon>
+      <span>Painel</span>
+    </button>
+
+    <mat-menu #appMenuCelula="matMenu">
+      <button mat-menu-item routerLink="/celulas">Pesquisar Células</button>
+      <button mat-menu-item routerLink="/celulas/nova">Cadastrar Célula</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenuCelula"  class="fofura" style="margin-left: 40px">
+      <mat-icon>group</mat-icon>
+      <span>Células</span>
+    </button>
+
+    <mat-menu #appMenuPessoa="matMenu">
+      <a mat-menu-item class="botao-link" routerLink="/pessoas">Pesquisar Pessoa</a>
+      <a mat-menu-item class="botao-link" routerLink="/pessoas/nova">Cadastrar Pessoa</a>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenuPessoa"  class="fofura" style="margin-left: 45px">
+      <mat-icon>mood</mat-icon>
+      <span>Pessoas</span>
+    </button>
+
+    <mat-menu #appMenuFinanc="matMenu">
+      <button mat-menu-item>Pesquisar</button>
+      <button mat-menu-item>Cadastrar</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenuFinanc"  class="fofura" style="margin-left: 55px">
+      <mat-icon>monetization_on</mat-icon>
+      <span>Financeiro</span>
+    </button>
+
+  <mat-menu #appMenuLouvor="matMenu">
+      <a mat-menu-item class="botao-link" routerLink="/escala-louvor">Ver Escalas Louvor</a>
+      <a mat-menu-item class="botao-link" routerLink="/escala-louvor/nova">Cadastrar Escala Louvor</a>
+      <a mat-menu-item class="botao-link" routerLink="/musicas">Pesquisar Músicas</a>
+      <a mat-menu-item class="botao-link" routerLink="/musicas/nova">Cadastrar Música</a>
+      <a mat-menu-item class="botao-link" routerLink="/ministros">Pesquisar Ministros</a>
+      <a mat-menu-item class="botao-link" routerLink="/ministros/novo">Cadastrar Ministro</a>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenuLouvor"  class="fofura" style="margin-left: 60px">
+      <mat-icon>audiotrack</mat-icon>
+      <span>Louvor</span>
+    </button>
+
+    <mat-menu #appMenuConfig="matMenu">
+        <a mat-menu-item class="botao-link" routerLink="/igrejas">Pesquisar Igreja</a>
+        <a mat-menu-item class="botao-link" routerLink="/igrejas/nova">Cadastrar Igreja</a>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="appMenuConfig"  class="fofura" style="margin-left: 45px">
+        <mat-icon>brightness_low</mat-icon>
+        <span>Configurações</span>
+      </button>
+  
+    
+  
+  </mat-toolbar>

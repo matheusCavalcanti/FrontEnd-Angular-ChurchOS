@@ -1,0 +1,113 @@
+<div class="container espaco-baixo">
+    <div class="titulo">
+        <h1>{{ editando ? 'Edição de' : 'Nova' }} Célula</h1>
+    </div>
+
+    <form #f="ngForm">
+        <mat-card class="card">
+            <mat-card-header class="titulo-card">
+                Preencha todo o formulário para cadastrar uma nova Célula
+            </mat-card-header>
+
+            <mat-card-content class="card">
+                <div class="col-md-8">
+                    <mat-form-field class="col-md-8" style="margin-top: 30px;">
+                        <input matInput placeholder="Nome da Célula" [(ngModel)]="celula.nome" name="nome" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12">
+                    <mat-form-field class="col-md-3">
+                        <mat-select placeholder="Líder" [(ngModel)]="celula.lider" name="lider">
+                            <mat-option *ngFor="let pessoa of pessoas" [value]="pessoa">
+                                {{pessoa.nome}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-3">
+                        <input matInput placeholder="Auxiliar" [(ngModel)]="celula.auxiliar" name="auxiliar" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-2">
+                        <mat-select placeholder="Dia da Célula" [(ngModel)]="celula.dia" name="dia">
+                            <mat-option *ngFor="let dia of dias" [value]="dia.value">
+                                {{dia.view}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12">
+                    <mat-form-field class="col-md-2">
+                        <input matInput placeholder="Horário da Célula" [(ngModel)]="celula.horario" name="horario"
+                            required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-3">
+                        <input matInput placeholder="CEP" [(ngModel)]="celula.cep" name="cep" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-3">
+                        <mat-select placeholder="Estado" [(ngModel)]="celula.estado" name="estado">
+                            <mat-option *ngFor="let est of estados" [value]="est.value">
+                                {{est.view}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-10">
+                    <mat-form-field class="col-md-5">
+                        <input matInput placeholder="Cidade" [(ngModel)]="celula.cidade" name="cidade" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-4">
+                        <input matInput placeholder="Bairro" [(ngModel)]="celula.bairro" name="bairro" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-10">
+                    <mat-form-field class="col-md-6">
+                        <input matInput placeholder="Logradouro" [(ngModel)]="celula.logradouro" name="logradouro"
+                            required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-3">
+                        <input matInput placeholder="Número" [(ngModel)]="celula.numero" name="numero" required>
+                    </mat-form-field>
+                </div><br>
+
+                <div class="col-md-6">
+                    <span class="col-md-4" style="font-size: 25px; color: #673ab7">Membros:</span>
+                </div><br>
+
+                <div class="col-md-12">
+                    <p-pickList [source]="pessoas" [target]="pessoasSelecionadas" sourceHeader="Disponíveis"
+                        targetHeader="Selecionados" [responsive]="true" filterBy="nome" dragdrop="true" dragdropScope="pessoas"
+                        sourceFilterPlaceholder="Buscar pelo Nome" targetFilterPlaceholder="Buscar pelo Nome"
+                        [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}" name="pessoasEPA">
+                        <ng-template let-pessoa pTemplate="item">
+                            <div class="ui-helper-clearfix">
+                                <div style="font-size:14px;float:center;margin:15px 5px 0 0">{{pessoa.nome}} -
+                                    {{pessoa.celular}} -
+                                    {{pessoa.vinculo}}
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-pickList>
+                </div><br>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <div>
+                    <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+                        Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+                    </button>
+
+                    <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/celulas">Voltar
+                        para Pesquisa</a>
+                </div>
+            </mat-card-actions>
+
+        </mat-card>
+    </form>
+
+    {{lider}}
+
+
+</div>

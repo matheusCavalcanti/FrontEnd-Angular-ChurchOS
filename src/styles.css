@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Varela Round', sans-serif;
+    padding-top:64px; }
+
+table {
+    width: 100%;
+}
+
+.input-full-width {
+    width: 100%;
+}
+
+.mat-header-cell {
+    color: black;
+    font-size: 25px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.mat-cell {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.titulo {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 70px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.titulo-card {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #673ab7;
+}
+
+.botao-padrao {
+    text-decoration: none;
+}
+
+.botao-padrao:focus{
+    outline: none;
+}
+
+button.botao-verde {
+    background-color: rgb(48, 245, 22);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+.card {
+    margin-bottom: 50px;
+}
