@@ -81,7 +81,7 @@
     </p-dataView>
 
     <p-dialog header="Endereço da Célula" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
-        width="400" (onAfterHide)="onDialogHide()">
+        width="400" (onAfterHide)="onDialogHide()" appendTo="body">
         <div class="ui-g" *ngIf="celulaSelecionada">
             <div class="ui-g-12" style="text-align:center">
                 <img src="http://3.bp.blogspot.com/_KT0UvU7k5lE/TMroAPq0aNI/AAAAAAAABDY/fiDNGMtone8/s1600/mda_heart.png">
@@ -108,7 +108,8 @@
     </p-dialog>
 
 
-    <p-dialog [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="800" (onAfterHide)="onDialogHide()">
+    <p-dialog [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="800" 
+    (onAfterHide)="onDialogHide()" appendTo="body">
         <p-header *ngIf="celulaMembros">
             Membros da Célula {{celulaMembros.nome}}
         </p-header>

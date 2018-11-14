@@ -4,6 +4,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute } from '@angular/router';
 import { Pessoa, Endereco } from '../shared/model/Pessoa.modelo';
 import { IgrejaService } from 'src/app/igreja/shared/service/igreja.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-cadastrar-pessoa',
@@ -60,7 +61,8 @@ export class CadastrarPessoaComponent implements OnInit {
     private igrejaService: IgrejaService,
     private pessoaService: PessoaService,
     private toasty: ToastyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -96,7 +98,8 @@ export class CadastrarPessoaComponent implements OnInit {
         this.toasty.success('Pessoa salva com sucesso!');
 
         this.pessoa = new Pessoa();
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
 }

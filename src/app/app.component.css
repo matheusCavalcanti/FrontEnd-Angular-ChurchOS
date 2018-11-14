@@ -1,0 +1,89 @@
+a.botao-link {
+    text-decoration: none;
+}
+
+.fofura:focus{
+    outline: 0px;
+}
+
+mat-toolbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.example-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+
+mat-drawer {
+    font-size: 30px;
+}
+
+a.fofo {
+    margin-top: 60px;
+    margin-right: 20px;
+    font-size: 25px;
+}
+
+.fonte-menu{
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 5px;
+    color:#00edb2;
+    font-style: italic;
+    font-size: 20px;
+    transition: font-size .3s ease-in-out, color .5s ease-in-out;
+}
+
+.fonte-menu:hover{
+    font-size: 22px;
+    color:#6dff33;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+button {
+    outline: none;
+}
+
+.botao-menu {
+    width: 100%;
+    background-color: #EF3434;
+    color: white;
+}
+
+.botao-alter {
+    width: 100%;
+    background-color: #EF3434;
+    color: white;
+}
+
+.letra-menu {
+    font-family: 'Permanent Marker', cursive;
+    color: grey;
+}
+
+.coelinho-fofo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-items: center;
+    align-content: space-between;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }

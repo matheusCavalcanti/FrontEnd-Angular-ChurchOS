@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CelulaService } from '../shared/service/celula.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { PessoaService } from 'src/app/pessoa/shared/service/pessoa.service';
 import { Pessoa } from 'src/app/pessoa/shared/model/Pessoa.modelo';
 import { Celula } from '../shared/model/Celula.modelo';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-cadastrar-celula',
@@ -16,7 +17,7 @@ export class CadastrarCelulaComponent implements OnInit {
   pessoas: Pessoa[];
   pessoa: Pessoa = new Pessoa();
   pessoasSelecionadas: Pessoa[] = [];
-  outrasPessoas: Pessoa[] = [];
+  // outrasPessoas: Pessoa[] = [];
 
   celula: Celula = new Celula();
   dias: Dia[] = [
@@ -59,10 +60,12 @@ export class CadastrarCelulaComponent implements OnInit {
   ];
 
       constructor(
+        private router: Router,
         private celulaService: CelulaService,
         private pessoaService: PessoaService,
         private toasty: ToastyService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private errorHandler: ErrorHandlerService
       ) { }
     
       get editando() {
@@ -74,10 +77,8 @@ export class CadastrarCelulaComponent implements OnInit {
     this.idCelula = this.route.snapshot.params['id'];
     if (this.idCelula) {
       this.carregarCelula(this.idCelula);
-    } else {
-      this.carregarPessoas();
-      this.outrasPessoas = this.pessoas;
     }
+
   }
 
   carregarPessoas() {
@@ -91,33 +92,27 @@ export class CadastrarCelulaComponent implements OnInit {
     this.celulaService.buscarPeloId(id)
       .then(celula => {
         this.celula = celula;
-        this.pessoasSelecionadas = this.celula.membros;
+        // this.pessoasSelecionadas = this.celula.membros;
         this.tentaTirar();
       });
   }
 
   salvar() {
+    this.celula.membros = this.pessoasSelecionadas;
     this.celulaService.adicionar(this.celula)
       .then(() => {
         this.toasty.success('Célula salva com sucesso!');
 
         this.celula = new Celula();
-      });
+        this.router.navigate(['/celulas']);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   tentaTirar() {
-    for (let i = 0; i < this.pessoasSelecionadas.length; i++) {
-      for (let j = 0; j < this.pessoas.length; j++) {
-        if (this.pessoas[j].id !== this.pessoasSelecionadas[i].id) {
-          console.log(this.pessoas[j].nome + '---' + this.pessoasSelecionadas[i].nome);
-          this.outrasPessoas.push(this.pessoas[j]);
-          if (this.outrasPessoas[j] === this.pessoasSelecionadas[i]) {
-            console.log(this.outrasPessoas);
-            this.outrasPessoas.pop();
-          }
-      }
-      }
-    }
+    const missing = this.pessoas.filter(item => this.pessoasSelecionadas.indexOf(item) < 0);
+    console.log(missing); // still ["e", "f", "g"]
+   // this.pessoas.pop();
   }
 
 }

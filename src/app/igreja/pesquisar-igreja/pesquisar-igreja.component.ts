@@ -4,6 +4,7 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { ToastyService } from 'ng2-toasty';
 import { IgrejaService } from '../shared/service/igreja.service';
 import { Igreja } from '../shared/model/Igreja.modelo';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-pesquisar-igreja',
@@ -25,7 +26,8 @@ export class PesquisarIgrejaComponent implements OnInit {
   constructor(
     private igrejaService: IgrejaService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -42,7 +44,8 @@ export class PesquisarIgrejaComponent implements OnInit {
         this.igrejas = igrejas;
         this.dataSource = new MatTableDataSource<Igreja>(this.igrejas);
         this.dataSource.paginator = this.paginator;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   excluir(igreja: number) {
@@ -51,7 +54,8 @@ export class PesquisarIgrejaComponent implements OnInit {
         this.pesquisar();
 
         this.toasty.success('Igreja excluída com sucesso!');
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(igreja: number) {

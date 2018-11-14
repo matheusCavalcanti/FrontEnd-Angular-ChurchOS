@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Pessoa } from 'src/app/pessoa/shared/model/Pessoa.modelo';
 import { MatPaginator } from '@angular/material/paginator';
 import { Ministro } from '../shared/model/ministro.modelo';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-pesquisar-ministro',
@@ -26,7 +27,8 @@ export class PesquisarMinistroComponent implements OnInit {
   constructor(
     private ministroService: MinistroService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -43,7 +45,8 @@ export class PesquisarMinistroComponent implements OnInit {
         this.ministros = ministros;
         this.dataSource = new MatTableDataSource<Pessoa>(this.ministros);
         this.dataSource.paginator = this.paginator;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   excluir(ministro: number) {
@@ -52,7 +55,8 @@ export class PesquisarMinistroComponent implements OnInit {
         this.pesquisar();
 
         this.toasty.success('Ministro excluído com sucesso!');
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(ministro: number) {

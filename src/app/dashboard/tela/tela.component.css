@@ -1,0 +1,45 @@
+body, html {
+    height: 100%;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url('https://static1.squarespace.com/static/537a20f4e4b0f8eee611cad4/t/53c52ccde4b0c9b471be3a66/1405431002454/ios_7_galaxy_wallpaper_for_desktop_by_iar7-d6av9ap.png?format=1500w');
+
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-mac {
+    /* The image used */
+    background-image: url('https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Office-background-1920x1080-PIC-WPC008188.jpeg');
+
+    /* Full height */
+    height: 100vh; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.texto {
+    color: darkviolet;
+}
+
+.card {
+    margin-top: 150px;
+}
+
+.fofura{
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}

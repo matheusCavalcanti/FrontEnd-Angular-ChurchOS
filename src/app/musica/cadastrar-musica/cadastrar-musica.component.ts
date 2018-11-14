@@ -5,6 +5,7 @@ import { ToastyService } from 'ng2-toasty';
 import { MusicaService } from '../shared/service/musica.service';
 import { Musica } from '../shared/model/Musica.modelo';
 import { ActivatedRoute } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-cadastrar-musica',
@@ -18,7 +19,8 @@ export class CadastrarMusicaComponent implements OnInit {
   constructor(
     private musicaService: MusicaService,
     private toasty: ToastyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private errorHandler: ErrorHandlerService
     ) { }
 
   ngOnInit() {
@@ -47,7 +49,8 @@ export class CadastrarMusicaComponent implements OnInit {
         this.toasty.success('Música adicionada com sucesso!');
 
         this.musica = new Musica();
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   

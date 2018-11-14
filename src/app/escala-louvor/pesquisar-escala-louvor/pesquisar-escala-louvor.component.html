@@ -1,139 +1,104 @@
 <div class="ui-g">
 
-  <div class="ui-g-offset-1">
-      <h1 class="titulo-ng">Escalas do Louvor</h1>
-  </div>
+    <div class="ui-g-offset-1">
+        <h1 class="titulo-ng">Escalas do Louvor</h1>
+    </div>
 
-  <p-dataView class="ui-g-10 ui-g-offset-1" #dv [value]="escalasLouvor" [paginator]="true" [rows]="5" paginatorPosition="both"
-      filterBy="nome">
-      <p-header>
-          <div class="ui-helper-clearfix">
-              <div class="ui-g">
-                  <div class="ui-g-12 ui-md-4">
-                      <a pButton type="button" label="Nova Escala" icon="fa fa-plus" routerLink="/escala-louvor/nova" class="ui-button-rounded ui-button-success"></a>
-                  </div>
-                  <div class="ui-g-1"></div>
+    <p-dataView class="ui-g-10 ui-g-offset-1" #dv [value]="escalasLouvor" [paginator]="true" [rows]="5"
+        paginatorPosition="both" filterBy="nome">
+        <p-header>
+            <div class="ui-helper-clearfix">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-4">
+                        <a pButton type="button" label="Nova Escala" icon="fa fa-plus" routerLink="/escala-louvor/nova"
+                            class="ui-button-rounded ui-button-success"></a>
+                    </div>
+                    <div class="ui-g-1"></div>
 
-                  <div class="ui-g-6 ui-md-4 filter-container">
-                      <div style="position:center">
-                          <input type="search" pInputText placeholder="Procurar pelo Nome" (keyup)="dv.filter($event.target.value)">
-                      </div>
-                  </div>
-                  <div class="ui-g-6 ui-md-3" style="text-align:right">
-                      <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-                  </div>
-              </div>
-          </div>
-      </p-header>
-      <ng-template let-escala pTemplate="listItem">
-          <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-              <div class="ui-g-12 ui-md-3" style="text-align:center">
-                  <img src="https://icon-icons.com/icons2/294/PNG/256/Music_31107.png" width="200">
-              </div>
-              <div class="ui-g-12 ui-md-8 car-details">
-                  <div class="ui-g">
-                      <div class="ui-g-2 ui-sm-6">Tipo do Culto: </div>
-                      <div class="ui-g-10 ui-sm-6"><b>{{escala.tipoCulto}}</b></div>
+                    <div class="ui-g-6 ui-md-4 filter-container">
+                        <div style="position:center">
+                            <input type="search" pInputText placeholder="Procurar pelo Nome" (keyup)="dv.filter($event.target.value)">
+                        </div>
+                    </div>
+                    <div class="ui-g-6 ui-md-3" style="text-align:right">
+                        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                    </div>
+                </div>
+            </div>
+        </p-header>
+        <ng-template let-escala pTemplate="listItem">
+            <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                <div class="ui-g-12 ui-md-3" style="text-align:center">
+                    <img src="https://icon-icons.com/icons2/294/PNG/256/Music_31107.png" width="200">
+                </div>
+                <div class="ui-g-12 ui-md-8 car-details">
+                    <div class="ui-g">
+                        <div class="ui-g-2 ui-sm-6">Tipo do Culto: </div>
+                        <div class="ui-g-10 ui-sm-6"><b>{{escala.tipoCulto}}</b></div>
 
-                      <div class="ui-g-2 ui-sm-6">Descrição: </div>
-                      <div class="ui-g-10 ui-sm-6"><b>{{escala.descricao}}</b></div>
+                        <div class="ui-g-2 ui-sm-6">Descrição: </div>
+                        <div class="ui-g-10 ui-sm-6"><b>{{escala.descricao}}</b></div>
 
-                      <div class="ui-g-2 ui-sm-6">Data: </div>
-                      <div class="ui-g-10 ui-sm-6"><b>{{escala.data}}</b></div>
+                        <div class="ui-g-2 ui-sm-6">Data: </div>
+                        <div class="ui-g-10 ui-sm-6"><b>{{escala.data | date:'dd/MM/y'}}</b></div>
 
-                      <div class="ui-g-2 ui-sm-6">Ministros: </div>
-                      <div class="ui-g-10 ui-sm-6" *ngFor="let ministros of escala.ministros"><b>{{ministros.pessoa.nome}} || </b></div>
+                        <div class="ui-g-8 ui-sm-6">Ministros:
+                            <span class="ui-sm-6" *ngFor="let ministros of escala.ministros" style="font: lighter; color: blueviolet;">
+                                <b> {{ministros.pessoa.nome}} || </b></span>
+                        </div>
 
-                      <div class="ui-g-2 ui-sm-6">Músicas: </div>
-                      <div class="ui-g-2 ui-sm-6" *ngFor="let musicas of escala.musicas">
-                        <b>- {{musicas.nomeOriginal}} - </b>
-                      </div>
-                  </div>
-              </div>
-              <div class="ui-g-12 ui-md-1 search-icon" style="margin-top: 20px;">
-                  <button pButton type="button" icon="pi pi-search" (click)="showDialog(escala)" pTooltip="Detalhes"
-                      tooltipPosition="left" style="margin-top: 5px;"></button><br>
-                  <button pButton type="button" icon="fa fa-pencil" class="ui-button-warning" pTooltip="Editar"
-                      tooltipPosition="left" [routerLink]="['/escala-louvor', escala.id]" style="margin-top: 5px;"></button><br>
-                  <button pButton type="button" icon="fa fa-trash" class="ui-button-danger" pTooltip="Excluir"
-                      tooltipPosition="right" (click)="confirmarExclusao(escala.id)" style="margin-top: 5px;"></button>
-              </div>
-          </div>
-      </ng-template>
-      <ng-template let-escala pTemplate="gridItem">
-          <div style="padding:.5em" class="ui-g-12 ui-md-3">
-              <p-panel [header]="escala.tipoCulto" [style]="{'text-align':'center'}">
-                  <img src="https://icon-icons.com/icons2/294/PNG/256/Music_31107.png"
-                      width="60">
-                  <div class="escala">{{escala.descricao}} - {{escala.data}}</div>
-                  <hr class="ui-widget-content" style="border-top:0">
-                  <button pButton type="button" icon="pi pi-search" (click)="showDialog(escala)" style="margin-top:0; margin-right: 5px"
-                      pTooltip="Detalhes" tooltipPosition="bottom"></button>
-                  <button pButton type="button" icon="fa fa-pencil" class="ui-button-warning" pTooltip="Editar"
-                      tooltipPosition="bottom" [routerLink]="['/escala-louvor', escala.id]" style="margin-right: 5px;"></button>
-                  <button pButton type="button" icon="fa fa-trash" class="ui-button-danger" pTooltip="Excluir"
-                      tooltipPosition="bottom" (click)="confirmarExclusao(escala.id)"></button>
-              </p-panel>
-          </div>
-      </ng-template>
-  </p-dataView>
+                        <div class="ui-g-6 ui-sm-6">Músicas: </div>
+                    </div>
+                            <span class="ui-g-2 ui-sm-6" *ngFor="let musicas of escala.musicas" style="font: lighter; color: rgb(67, 235, 67);">
+                                <b> {{musicas.nomeOriginal}}; </b>
+                            </span>
+                </div>
+                <div class="ui-g-12 ui-md-1 search-icon" style="margin-top: 20px;">
+                    <button pButton type="button" icon="pi pi-search" (click)="showDialog(escala)" pTooltip="Detalhes"
+                        tooltipPosition="left" style="margin-top: 5px;"></button><br>
+                    <button pButton type="button" icon="fa fa-pencil" class="ui-button-warning" pTooltip="Editar"
+                        tooltipPosition="left" [routerLink]="['/escala-louvor', escala.id]" style="margin-top: 5px;"></button><br>
+                    <button pButton type="button" icon="fa fa-trash" class="ui-button-danger" pTooltip="Excluir"
+                        tooltipPosition="right" (click)="confirmarExclusao(escala.id)" style="margin-top: 5px;"></button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-escala pTemplate="gridItem">
+            <div style="padding:.5em" class="ui-g-12 ui-md-3">
+                <p-panel [header]="escala.tipoCulto" [style]="{'text-align':'center'}">
+                    <img src="https://icon-icons.com/icons2/294/PNG/256/Music_31107.png" width="60">
+                    <div class="escala">{{escala.descricao}} - {{escala.data | date:'dd/MM/y'}}</div>
+                    <hr class="ui-widget-content" style="border-top:0">
+                    <button pButton type="button" icon="pi pi-search" (click)="showDialog(escala)" style="margin-top:0; margin-right: 5px"
+                        pTooltip="Detalhes" tooltipPosition="bottom"></button>
+                    <button pButton type="button" icon="fa fa-pencil" class="ui-button-warning" pTooltip="Editar"
+                        tooltipPosition="bottom" [routerLink]="['/escala-louvor', escala.id]" style="margin-right: 5px;"></button>
+                    <button pButton type="button" icon="fa fa-trash" class="ui-button-danger" pTooltip="Excluir"
+                        tooltipPosition="bottom" (click)="confirmarExclusao(escala.id)"></button>
+                </p-panel>
+            </div>
+        </ng-template>
+    </p-dataView>
 
-  <p-dialog header="Ministros e Músicas" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
-      width="400" (onAfterHide)="onDialogHide()">
-      <div class="ui-g" *ngIf="escalaSelecionada">
-          <div class="ui-g-12" style="text-align:center">
-              <img src="http://localesjc.com/wp-content/uploads/2017/05/vinilo-grupo-rock-600x423.png" width="300">
-          </div>
-          <div class="ui-g-4">Ministros: </div>
-          <div class="ui-g-8" *ngFor="let ministros of escalaSelecionada.ministros"><b>{{ministros.pessoa.nome}}</b></div>
-          <div class="ui-g-12"><hr></div>
+    <p-dialog header="Ministros e Músicas" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+        width="400" (onAfterHide)="onDialogHide()" appendTo="body">
+        <div class="ui-g" *ngIf="escalaSelecionada">
+            <div class="ui-g-12" style="text-align:center">
+                <img src="http://localesjc.com/wp-content/uploads/2017/05/vinilo-grupo-rock-600x423.png" width="300">
+            </div>
+            <div class="ui-g-4">Ministros: </div>
+            <div class="ui-g-8" *ngFor="let ministros of escalaSelecionada.ministros" style="font: lighter; color: blueviolet;"><b>{{ministros.pessoa.nome}}</b></div>
+            <div class="ui-g-12">
+                <hr>
+            </div>
 
-          <div class="ui-g-4">Músicas: </div>
-          <div class="ui-g-12" *ngFor="let musicas of escalaSelecionada.musicas"><b>{{musicas.descricao}}</b></div>
-          <div class="ui-g"><hr></div>
+            <div class="ui-g-4">Músicas: </div>
+            <div class="ui-g-12" *ngFor="let musicas of escalaSelecionada.musicas" style="font: lighter; color: rgb(67, 235, 67);"><b>{{musicas.descricao}}</b></div>
+            <div class="ui-g">
+                <hr>
+            </div>
 
-      </div>
-  </p-dialog>
-
-
-  <p-dialog [(visible)]="display" [responsive]="true" showEffect="fade" [modal]="true" width="800" (onAfterHide)="onDialogHide()">
-      <p-header *ngIf="celulaMembros">
-          Membros da Célula {{celulaMembros.nome}}
-      </p-header>
-      <div class="ui-g" *ngIf="celulaMembros">
-          <div class="ui-g-12" style="text-align:center">
-              <img src="http://3.bp.blogspot.com/_KT0UvU7k5lE/TMroAPq0aNI/AAAAAAAABDY/fiDNGMtone8/s1600/mda_heart.png">
-          </div>
-          <div class="ui-g" style="margin-left: 240px;">
-              <h3 style="color: blue; font-family: 'Varela Round', sans-serif">Membros: {{celulaMembros.nome}}</h3>
-              <button pButton type="button" class="ui-button-success" label="Novo Membro"
-               style="margin-bottom: 10px; margin-left: 30px;" [routerLink]="['/celulas', celulaMembros.id]"></button>
-          </div>
-          <p-table [value]="celulaMembros.membros">
-              <ng-template pTemplate="header">
-                  <tr>
-                      <th>Nome</th>
-                      <th>CPF</th>
-                      <th>Data Nasc.</th>
-                      <th>Celular</th>
-                      <th>Ações</th>
-                  </tr>
-              </ng-template>
-              <ng-template pTemplate="body" let-pessoa>
-                  <tr>
-                      <td>{{pessoa.nome}}</td>
-                      <td>{{pessoa.cpf}}</td>
-                      <td>{{pessoa.dataNascimento}}</td>
-                      <td>{{pessoa.celular}}</td>
-                      <td>
-                          <button pButton type="button" class="ui-button-danger" icon="fa fa-trash" style="margin-left: 50px"
-                              pTooltip="Excluir" tooltipPosition="right"></button>
-                      </td>
-                  </tr>
-              </ng-template>
-          </p-table>
-
-      </div>
-  </p-dialog>
+        </div>
+    </p-dialog>
 
 </div>

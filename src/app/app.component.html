@@ -1,13 +1,118 @@
-<app-menu></app-menu>
+<mat-drawer-container class="example-container" hasBackdrop="true">
+    <mat-drawer-content>
 
-<router-outlet></router-outlet>
+        <mat-toolbar color="primary" class="layout">
+            <span style="font-family: 'Bangers', cursive; font-size: 30px">ChurchOS</span>
+            <span *ngIf="!telaLogin()">
+                <button mat-icon-button class="fofura" routerLink="/inicio" style="margin-left: 15px">
+                    <mat-icon>home</mat-icon>
+                    <span>Início</span>
+                </button>
+                <button mat-icon-button class="fofura" (click)="drawer.toggle()" (click)="showCelulas = true" style="margin-left: 40px">
+                    <mat-icon>group</mat-icon>
+                    <span>Células</span>
+                </button>
+                <button mat-icon-button class="fofura" (click)="drawer.toggle()" (click)="showPessoas = true" style="margin-left: 45px">
+                    <mat-icon>mood</mat-icon>
+                    <span>Pessoas</span>
+                </button>
+                <button mat-icon-button class="fofura" (click)="drawer.toggle()" (click)="showFinanc = true" style="margin-left: 55px">
+                    <mat-icon>monetization_on</mat-icon>
+                    <span>Financeiro</span>
+                </button>
+                <button mat-icon-button class="fofura" (click)="drawer.toggle()" (click)="showLouvor = true" style="margin-left: 60px">
+                    <mat-icon>audiotrack</mat-icon>
+                    <span>Louvor</span>
+                </button>
+                <button mat-icon-button class="fofura" (click)="drawer.toggle()" (click)="showConfig = true" style="margin-left: 45px">
+                    <mat-icon>brightness_low</mat-icon>
+                    <span>Configurações</span>
+                </button>
+            </span>
+            <span class="example-spacer"></span>
+            <div *ngIf="telaLogin()" style="margin-right: 50px;">
+                <a style="font-family: 'Bangers', cursive; font-size: 20px;">Não possui uma Conta? <a 
+                    routerLink="/usuario/novo" style="cursor: pointer; color: gold"> Clique aqui!</a></a>
+                <a mat-icon-button class="fofura fonte-menu" routerLink="/login" style="margin-left: 15px">
+                    <span>Entrar</span>
+                    <mat-icon style="margin-left: 5px">send</mat-icon>
+                </a>
+            </div>
+        </mat-toolbar>
+
+
+        <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+
+    <mat-drawer class="example-sidenav" #drawer mode="push" (closed)="showCelulas=false; showPainel=false; showPessoas=false; showFinanc=false; showLouvor=false; showConfig=false">
+        <span class="letra-menu" style="color: red"> Bem vindo ao ChurchOS! </span> <br>
+        <span *ngIf="showPainel">
+
+        </span>
+
+        <span *ngIf="showCelulas">
+            <span class="letra-menu">Células</span>
+            <a mat-raised-button class="botao-menu" routerLink="/celulas">Pesquisar Células</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/celulas/nova">Cadastrar Célula</a>
+            <hr>
+        </span>
+
+        <span *ngIf="showPessoas">
+            <span class="letra-menu">Pessoas</span>
+            <a mat-raised-button class="botao-menu" routerLink="/pessoas">Pesquisar Pessoa</a>
+            <a mat-raised-button class="botao-menu" routerLink="/pessoas/nova">Cadastrar Pessoa</a>
+            <hr>
+        </span>
+
+        <span *ngIf="showFinanc">
+            <span class="letra-menu">Categorias Finan.</span>
+            <a mat-raised-button class="botao-menu" routerLink="/categoria-financeiro">Pesquisar Categoria Financeiro</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/categoria-financeiro/nova">Cadastrar Categoria
+                Financeiro</a>
+            <hr>
+            <span class="letra-menu">Fornecedores</span>
+            <a mat-raised-button class="botao-menu" routerLink="/fornecedor">Pesquisar Fornecedores</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/fornecedor/novo">Cadastrar Fornecedor</a>
+            <hr>
+            <span class="letra-menu">Conta Bancária</span>
+            <a mat-raised-button class="botao-menu" routerLink="/conta-bancaria">Pesquisar Conta Bancária</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/conta-bancaria/nova">Cadastrar Conta</a>
+            <hr>
+            <span class="letra-menu">Despesas</span>
+            <a mat-raised-button class="botao-menu" routerLink="/despesas">Ver Despesas</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/despesas/nova">Lançar Despesa</a>
+        </span>
+
+        <span *ngIf="showLouvor">
+            <span class="letra-menu">Escala Louvor</span>
+            <a mat-raised-button class="botao-menu" routerLink="/escala-louvor">Ver Escalas Louvor</a><br>
+            <a mat-raised-button class="botao-alter" routerLink="/escala-louvor/nova">Cadastrar Escala Louvor</a><br>
+            <hr>
+            <span class="letra-menu">Músicas</span>
+            <a mat-raised-button class="botao-menu" routerLink="/musicas">Pesquisar Músicas</a><br>
+            <a mat-raised-button class="botao-alter" routerLink="/musicas/nova">Cadastrar Música</a><br>
+            <hr>
+            <span class="letra-menu">Ministros</span>
+            <a mat-raised-button class="botao-menu" routerLink="/ministros">Pesquisar Ministros</a><br>
+            <a mat-raised-button class="botao-alter" routerLink="/ministros/novo">Cadastrar Ministro</a><br>
+        </span>
+
+        <span *ngIf="showConfig">
+            <span class="letra-menu">Igreja</span>
+            <a mat-raised-button class="botao-menu" routerLink="/igrejas">Pesquisar Igreja</a>
+            <a mat-raised-button class="botao-menu" routerLink="/igrejas/nova">Cadastrar Igreja</a>
+            <hr>
+        </span>
+    </mat-drawer>
+
+
+</mat-drawer-container>
 
 <ng2-toasty></ng2-toasty>
 <p-confirmDialog header="Confirmação" icon="fa fa-question-circle" #confirmacao>
     <p-footer>
-        <button type="button" pButton icon="fa fa-check" class="ui-button-success"
-             label="Sim" (click)="confirmacao.accept()"></button>
-        <button type="button" pButton icon="fa fa-times" class="ui-button-danger"
-             label="Não" (click)="confirmacao.reject()"></button>
+        <button type="button" pButton icon="fa fa-check" class="ui-button-success" label="Sim" (click)="confirmacao.accept()"></button>
+        <button type="button" pButton icon="fa fa-times" class="ui-button-danger" label="Não" (click)="confirmacao.reject()"></button>
     </p-footer>
 </p-confirmDialog>

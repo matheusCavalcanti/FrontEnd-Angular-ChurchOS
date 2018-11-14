@@ -4,6 +4,7 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { PessoaService } from '../shared/service/pessoa.service';
 import { Pessoa, Endereco } from '../shared/model/Pessoa.modelo';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-pesquisar-pessoas',
@@ -26,7 +27,8 @@ export class PesquisarPessoasComponent implements OnInit {
   constructor(
     private pessoaService: PessoaService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -43,7 +45,8 @@ export class PesquisarPessoasComponent implements OnInit {
         this.pessoas = pessoas;
         this.dataSource = new MatTableDataSource<Pessoa>(this.pessoas);
         this.dataSource.paginator = this.paginator;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   excluir(pessoa: number) {
@@ -52,7 +55,8 @@ export class PesquisarPessoasComponent implements OnInit {
         this.pesquisar();
 
         this.toasty.success('Pessoa excluída com sucesso!');
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(pessoa: number) {

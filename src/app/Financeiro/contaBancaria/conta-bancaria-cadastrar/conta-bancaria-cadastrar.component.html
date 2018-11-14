@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="titulo">
+    <h1>{{ editando ? 'Edição de' : 'Nova' }} Conta Bancária</h1>
+  </div>
+
+  <form #f="ngForm">
+    <mat-card class="card">
+
+      <mat-card-header class="titulo-card">
+        Dados da Conta Bancária
+      </mat-card-header>
+
+      <mat-card-content class="card">
+        <div class="col-md-10">
+          <mat-form-field class="col-md-5">
+            <input matInput placeholder="Nome" [(ngModel)]="conta.nome" name="nome" required>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+              <mat-select placeholder="Tipo de Conta (Selecione)" [(ngModel)]="conta.tipo" name="tipo">
+                <mat-option *ngFor="let tipo of tipoConta" [value]="tipo.value">
+                  {{tipo.view}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-10">
+          <mat-form-field class="col-md-5">
+            <input matInput placeholder="Banco" [(ngModel)]="conta.banco" name="banco" required>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <input matInput placeholder="Agência" [(ngModel)]="conta.agencia" name="agencia" required>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-10">
+          <mat-form-field class="col-md-5">
+            <input matInput placeholder="Conta" [(ngModel)]="conta.conta" name="conta" required>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <input matInput placeholder="Saldo" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+             [(ngModel)]="conta.saldo" name="saldo" required>
+          </mat-form-field>
+        </div>
+
+        <mat-card-actions>
+          <div style="margin-left: 23px">
+            <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+              Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+            </button>
+
+            <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/conta-bancaria">Voltar
+              para Pesquisa</a>
+          </div>
+        </mat-card-actions>
+
+      </mat-card-content>
+
+    </mat-card>
+  </form>
+
+
+</div>

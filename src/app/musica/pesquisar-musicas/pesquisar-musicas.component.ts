@@ -5,6 +5,7 @@ import { MusicaService } from '../shared/service/musica.service';
 import { Musica } from '../shared/model/Musica.modelo';
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-pesquisar-musicas',
@@ -26,7 +27,8 @@ export class PesquisarMusicasComponent implements OnInit {
   constructor(
     private musicaService: MusicaService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
     ) {}
     
     
@@ -46,7 +48,8 @@ export class PesquisarMusicasComponent implements OnInit {
         this.musicasRecebidas = musicas;
         this.dataSource = new MatTableDataSource<Musica>(this.musicasRecebidas);
         this.dataSource.paginator = this.paginator;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(musica: number) {
@@ -65,7 +68,8 @@ export class PesquisarMusicasComponent implements OnInit {
         this.grid.firstPage = 0;
 
         this.toasty.success('Música excluída com sucesso!');
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
 }

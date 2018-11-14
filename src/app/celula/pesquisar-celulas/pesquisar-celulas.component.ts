@@ -4,6 +4,7 @@ import { ToastyService } from 'ng2-toasty/src/toasty.service';
 import { Celula } from '../shared/model/Celula.modelo';
 import { MatTableDataSource } from '@angular/material/table';
 import { CelulaService } from '../shared/service/celula.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-pesquisar-celulas',
@@ -24,7 +25,8 @@ export class PesquisarCelulasComponent implements OnInit {
   constructor(
     private celulaService: CelulaService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -35,7 +37,8 @@ export class PesquisarCelulasComponent implements OnInit {
     this.celulaService.pesquisar()
       .then(celulas => {
         this.celulas = celulas;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   excluir(celula: number) {
@@ -44,7 +47,8 @@ export class PesquisarCelulasComponent implements OnInit {
         this.pesquisar();
 
         this.toasty.success('Célula excluída com sucesso!');
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(celula: number) {

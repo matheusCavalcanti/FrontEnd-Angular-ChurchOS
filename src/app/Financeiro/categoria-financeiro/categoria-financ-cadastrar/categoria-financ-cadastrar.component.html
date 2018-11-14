@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="titulo">
+      <h1>{{ editando ? 'Edição de' : 'Nova' }} Categoria</h1>
+    </div>
+
+    <form #f="ngForm">
+      <div class="col-md-8">
+        <mat-form-field class="col-md-8">
+            <input matInput placeholder="Descrição" [(ngModel)]="categoria.descricao" name="descricao" required>
+        </mat-form-field>    
+      </div>
+
+      <div class="col-md-8">
+        <mat-form-field class="col-md-8">
+            <mat-select placeholder="Natureza (Selecione)" [(ngModel)]="categoria.natureza" name="natureza">
+                <mat-option *ngFor="let nat of natureza" [value]="nat.value">
+                  {{nat.view}}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>    
+      </div>
+
+      <div>
+        <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+          Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+        </button>
+
+        <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/categoria-financeiro">Voltar para Pesquisa</a>
+      </div>
+    </form>
+
+
+</div>
