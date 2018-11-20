@@ -11,7 +11,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatCardModule, MatTableModule, MatInputModule, MatPaginatorModule, MatTooltipModule } from '@angular/material';
 import { InicioComponent } from './inicio/inicio.component';
 import {ChartModule} from 'primeng/components/chart/chart';
-import { TelaLoginComponent } from './tela-login/tela-login.component';
+import { TelaLoginComponent } from '../seguranca/tela-login/tela-login.component';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { TooltipModule } from 'primeng/tooltip';

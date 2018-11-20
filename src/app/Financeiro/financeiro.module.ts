@@ -26,6 +26,9 @@ import { ContaBancariaPesquisarComponent } from '../Financeiro/contaBancaria/con
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ContaBancariaCadastrarComponent } from '../Financeiro/contaBancaria/conta-bancaria-cadastrar/conta-bancaria-cadastrar.component';
 import { DespesaCadastrarComponent } from '../Financeiro/despesas/despesa-cadastrar/despesa-cadastrar.component';
+import { ContribuicaoPesquisarComponent } from '../Financeiro/contribuicao/contribuicao-pesquisar/contribuicao-pesquisar.component';
+import { ContribuicaoCadastrarComponent } from '../Financeiro/contribuicao/contribuicao-cadastrar/contribuicao-cadastrar.component';
+import { ContribuicaoExcluidaPesquisarComponent } from '../Financeiro/contribuicao-excluida/contribuicao-excluida-pesquisar/contribuicao-excluida-pesquisar.component';
 
 @NgModule({
   imports: [
@@ -58,7 +61,8 @@ import { DespesaCadastrarComponent } from '../Financeiro/despesas/despesa-cadast
   ],
   declarations: [CategoriaFinancPesquisarComponent, CategoriaFinancCadastrarComponent, FornecedorPesquisarComponent, 
     FornecedorCadastrarComponent, DespesaPesquisarComponent, ContaBancariaPesquisarComponent, 
-    ContaBancariaCadastrarComponent, DespesaCadastrarComponent
+    ContaBancariaCadastrarComponent, DespesaCadastrarComponent, ContribuicaoPesquisarComponent, 
+    ContribuicaoCadastrarComponent, ContribuicaoExcluidaPesquisarComponent
     ],
   exports: [CategoriaFinancPesquisarComponent, CategoriaFinancCadastrarComponent, FornecedorPesquisarComponent, 
     FornecedorCadastrarComponent, ContaBancariaPesquisarComponent, ContaBancariaCadastrarComponent, DespesaPesquisarComponent,

@@ -31,8 +31,8 @@
             </span>
             <span class="example-spacer"></span>
             <div *ngIf="telaLogin()" style="margin-right: 50px;">
-                <a style="font-family: 'Bangers', cursive; font-size: 20px;">Não possui uma Conta? <a 
-                    routerLink="/usuario/novo" style="cursor: pointer; color: gold"> Clique aqui!</a></a>
+                <a style="font-family: 'Bangers', cursive; font-size: 20px;">Não possui uma Conta? <a routerLink="/usuario/novo"
+                        style="cursor: pointer; color: gold"> Clique aqui!</a></a>
                 <a mat-icon-button class="fofura fonte-menu" routerLink="/login" style="margin-left: 15px">
                     <span>Entrar</span>
                     <mat-icon style="margin-left: 5px">send</mat-icon>
@@ -47,44 +47,49 @@
 
     <mat-drawer class="example-sidenav" #drawer mode="push" (closed)="showCelulas=false; showPainel=false; showPessoas=false; showFinanc=false; showLouvor=false; showConfig=false">
         <span class="letra-menu" style="color: red"> Bem vindo ao ChurchOS! </span> <br>
+        <hr>
         <span *ngIf="showPainel">
 
         </span>
 
-        <span *ngIf="showCelulas">
+        <div *ngIf="showCelulas">
             <span class="letra-menu">Células</span>
             <a mat-raised-button class="botao-menu" routerLink="/celulas">Pesquisar Células</a><br>
             <a mat-raised-button class="botao-menu" routerLink="/celulas/nova">Cadastrar Célula</a>
             <hr>
-        </span>
+        </div>
 
-        <span *ngIf="showPessoas">
+        <div *ngIf="showPessoas">
             <span class="letra-menu">Pessoas</span>
             <a mat-raised-button class="botao-menu" routerLink="/pessoas">Pesquisar Pessoa</a>
             <a mat-raised-button class="botao-menu" routerLink="/pessoas/nova">Cadastrar Pessoa</a>
             <hr>
-        </span>
+        </div>
 
-        <span *ngIf="showFinanc">
+        <div *ngIf="showFinanc">
             <span class="letra-menu">Categorias Finan.</span>
-            <a mat-raised-button class="botao-menu" routerLink="/categoria-financeiro">Pesquisar Categoria Financeiro</a><br>
-            <a mat-raised-button class="botao-menu" routerLink="/categoria-financeiro/nova">Cadastrar Categoria
-                Financeiro</a>
+            <a mat-raised-button class="botao-menu" routerLink="/categoria-financeiro">Categorias Financeiro</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/categoria-financeiro/nova">Nova Categoria</a>
             <hr>
             <span class="letra-menu">Fornecedores</span>
             <a mat-raised-button class="botao-menu" routerLink="/fornecedor">Pesquisar Fornecedores</a><br>
             <a mat-raised-button class="botao-menu" routerLink="/fornecedor/novo">Cadastrar Fornecedor</a>
             <hr>
             <span class="letra-menu">Conta Bancária</span>
-            <a mat-raised-button class="botao-menu" routerLink="/conta-bancaria">Pesquisar Conta Bancária</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/conta-bancaria">Contas Bancárias</a><br>
             <a mat-raised-button class="botao-menu" routerLink="/conta-bancaria/nova">Cadastrar Conta</a>
             <hr>
             <span class="letra-menu">Despesas</span>
             <a mat-raised-button class="botao-menu" routerLink="/despesas">Ver Despesas</a><br>
             <a mat-raised-button class="botao-menu" routerLink="/despesas/nova">Lançar Despesa</a>
-        </span>
+            <hr>
+            <span class="letra-menu">Contribuições</span>
+            <a mat-raised-button class="botao-menu" routerLink="/contribuicao">Ver Contribuições</a><br>
+            <a mat-raised-button class="botao-menu" routerLink="/contribuicao/nova">Lançar Contribuição</a>
+        </div>
 
-        <span *ngIf="showLouvor">
+
+        <div *ngIf="showLouvor">
             <span class="letra-menu">Escala Louvor</span>
             <a mat-raised-button class="botao-menu" routerLink="/escala-louvor">Ver Escalas Louvor</a><br>
             <a mat-raised-button class="botao-alter" routerLink="/escala-louvor/nova">Cadastrar Escala Louvor</a><br>
@@ -96,14 +101,16 @@
             <span class="letra-menu">Ministros</span>
             <a mat-raised-button class="botao-menu" routerLink="/ministros">Pesquisar Ministros</a><br>
             <a mat-raised-button class="botao-alter" routerLink="/ministros/novo">Cadastrar Ministro</a><br>
-        </span>
+        </div>
 
-        <span *ngIf="showConfig">
+        <div *ngIf="showConfig">
             <span class="letra-menu">Igreja</span>
             <a mat-raised-button class="botao-menu" routerLink="/igrejas">Pesquisar Igreja</a>
             <a mat-raised-button class="botao-menu" routerLink="/igrejas/nova">Cadastrar Igreja</a>
             <hr>
-        </span>
+            <span class="letra-menu">Relatórios</span>
+            <a mat-raised-button class="botao-menu" routerLink="/contribuicao-excluida">Contribuições Excluídas</a>
+        </div>
     </mat-drawer>
 
 

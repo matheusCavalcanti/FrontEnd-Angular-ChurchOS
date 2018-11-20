@@ -49,6 +49,9 @@ import { ContaBancariaCadastrarComponent } from './Financeiro/contaBancaria/cont
 import { DespesaPesquisarComponent } from './Financeiro/despesas/despesa-pesquisar/despesa-pesquisar.component';
 import { DespesaCadastrarComponent } from './Financeiro/despesas/despesa-cadastrar/despesa-cadastrar.component';
 import { TelaLoginComponent } from './seguranca/tela-login/tela-login.component';
+import { ContribuicaoPesquisarComponent } from './Financeiro/contribuicao/contribuicao-pesquisar/contribuicao-pesquisar.component';
+import { ContribuicaoCadastrarComponent } from './Financeiro/contribuicao/contribuicao-cadastrar/contribuicao-cadastrar.component';
+import { ContribuicaoExcluidaPesquisarComponent } from './Financeiro/contribuicao-excluida/contribuicao-excluida-pesquisar/contribuicao-excluida-pesquisar.component';
 
 
 
@@ -85,6 +88,10 @@ const routes: Routes = [
   { path: 'despesas', component: DespesaPesquisarComponent },
   { path: 'despesas/nova', component: DespesaCadastrarComponent },
   { path: 'despesas/:id', component: DespesaCadastrarComponent },
+  { path: 'contribuicao', component: ContribuicaoPesquisarComponent },
+  { path: 'contribuicao/nova', component: ContribuicaoCadastrarComponent },
+  { path: 'contribuicao/:id', component: ContribuicaoCadastrarComponent },
+  { path: 'contribuicao-excluida', component: ContribuicaoExcluidaPesquisarComponent },
   { path: 'usuario/novo', component: UsuarioCadastrarComponent },
   { path: 'login', component: TelaLoginComponent }
 ];

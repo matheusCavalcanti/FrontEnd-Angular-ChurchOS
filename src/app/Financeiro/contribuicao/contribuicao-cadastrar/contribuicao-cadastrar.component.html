@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="titulo">
+    <h1>{{ editando ? 'Edição de' : 'Lançar' }} Contribuição</h1>
+  </div>
+
+  <form #f="ngForm">
+    <mat-card class="card">
+
+      <mat-card-header class="titulo-card">
+        Dados da Contribuição
+      </mat-card-header>
+
+      <mat-card-content class="card">
+        <div class="col-md-10">
+          <mat-form-field class="col-md-5">
+            <mat-select placeholder="Pessoa" [(ngModel)]="contrib.pessoa" name="pessoa">
+              <mat-option *ngFor="let pessoa of pessoas" [value]="pessoa">
+                {{pessoa.nome}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <mat-select placeholder="Categoria" [(ngModel)]="contrib.categoria" name="categoria">
+              <mat-option *ngFor="let cat of categContribuicao" [value]="cat">
+                {{cat.descricao}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-8">
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="Culto" [(ngModel)]="contrib.culto" name="culto" required>
+          </mat-form-field>
+          <mat-form-field class="col-md-4">
+            <input matInput [matDatepicker]="picker" placeholder="Data" [(ngModel)]="contrib.data" name="data" required
+              disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-10">
+          <mat-form-field class="col-md-2">
+            <input matInput placeholder="Valor" [(ngModel)]="contrib.valor" name="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+              required>
+          </mat-form-field>
+          <mat-form-field class="col-md-4">
+            <mat-select placeholder="Forma Pagamento" [(ngModel)]="contrib.formaPagamento" name="formaPagamento">
+              <mat-option *ngFor="let pag of formaPag" [value]="pag.value">
+                {{pag.view}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-md-4">
+            <mat-select placeholder="Conta Bancária" [(ngModel)]="contrib.conta" name="conta">
+              <mat-option *ngFor="let conta of contas" [value]="conta">
+                {{conta.nome}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-10">
+          <mat-form-field class="col-md-4">
+            <input matInput placeholder="Mes Contribuição" [(ngModel)]="contrib.mesContribuicao" name="mesContribuicao"
+              required>
+          </mat-form-field>
+          <mat-form-field class="col-md-6">
+            <input matInput placeholder="Observação" [(ngModel)]="contrib.observacao" name="observacao" required>
+          </mat-form-field>
+        </div>
+
+        <mat-card-actions>
+          <div style="margin-left: 23px">
+            <button type="submit" (click)="salvar()" mat-raised-button class="botao-padrao botao-verde">
+              Salvar<mat-icon style="margin-bottom:4px; margin-left: 7px;">send</mat-icon>
+            </button>
+
+            <a class="botao-link" style="margin-left: 10px;" mat-button color="primary" routerLink="/contribuicao">Voltar
+              para Pesquisa</a>
+          </div>
+        </mat-card-actions>
+
+      </mat-card-content>
+
+    </mat-card>
+  </form>
+
+
+</div>

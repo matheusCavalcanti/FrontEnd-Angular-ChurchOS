@@ -1,0 +1,19 @@
+a.botao-link {
+    text-decoration: none;
+}
+
+button {
+    
+}
+
+button:focus {
+    outline: none;
+}
+
+div.espaco-baixo {
+    padding-bottom: 40px;
+}
+
+.example-full-width {
+    width: 100%;
+}

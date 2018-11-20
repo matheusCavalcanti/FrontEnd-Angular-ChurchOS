@@ -20,6 +20,7 @@ export class DespesaCadastrarComponent implements OnInit {
 
   despesa = new Despesa();
   categorias: CategoriaFinanc[] = [];
+  categDespesa: CategoriaFinanc[] = [];
   contas: ContaBancaria[] = [];
   fornecedores: Fornecedor[] = [];
   formaPag: FormaPag[] = [
@@ -79,7 +80,19 @@ export class DespesaCadastrarComponent implements OnInit {
     this.categoriaService.pesquisar()
       .then(categorias => {
         this.categorias = categorias;
+        this.categoriasDespesa();
       });
+  }
+
+  categoriasDespesa() {
+    let j = 0;
+    for (let i = 0; i < this.categorias.length; i++) {
+      if (this.categorias[i].natureza === 'DESPESA') {
+        this.categDespesa[j] = this.categorias[i];
+        j++;
+      }
+    }
+    console.log(this.categDespesa);  
   }
 
   carregarFornecedores() {

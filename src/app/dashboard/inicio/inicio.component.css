@@ -1,15 +1,17 @@
-.example-card {
-   
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-    padding: 40px;
-    margin-bottom: 15px;
-  }
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  padding: 40px;
+  margin-bottom: 15px;
+}
 
 .card-titulo {
-    font-size: 30px;
-    margin-top: 15px;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+.imagem-fundo {
+  background-image: url('https://cdn.pixabay.com/photo/2017/04/19/16/02/screen-background-2242699_1280.jpg');
+  background-size: cover;
+  padding: 2%;
 }

@@ -60,6 +60,11 @@ button {
     outline: none;
 }
 
+button:focus {
+    text-decoration: none;
+    outline: none;
+}
+
 .botao-menu {
     width: 100%;
     background-color: #EF3434;
