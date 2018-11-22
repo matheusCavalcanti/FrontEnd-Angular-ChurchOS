@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import 'hammerjs'; 
-import {NgxMaskModule} from 'ngx-mask';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -51,9 +50,10 @@ import { DespesaCadastrarComponent } from './Financeiro/despesas/despesa-cadastr
 import { TelaLoginComponent } from './seguranca/tela-login/tela-login.component';
 import { ContribuicaoPesquisarComponent } from './Financeiro/contribuicao/contribuicao-pesquisar/contribuicao-pesquisar.component';
 import { ContribuicaoCadastrarComponent } from './Financeiro/contribuicao/contribuicao-cadastrar/contribuicao-cadastrar.component';
-import { ContribuicaoExcluidaPesquisarComponent } from './Financeiro/contribuicao-excluida/contribuicao-excluida-pesquisar/contribuicao-excluida-pesquisar.component';
-
-
+import { ContribuicaoExcluidaPesquisarComponent } from 
+'./Financeiro/contribuicao-excluida/contribuicao-excluida-pesquisar/contribuicao-excluida-pesquisar.component';
+import { ChartModule } from 'primeng/chart';
+import { JwtHelper } from 'angular2-jwt';
 
 const routes: Routes = [
   { path: '', component: TelaComponent },
@@ -115,6 +115,7 @@ const routes: Routes = [
     MatIconModule,
     MatSidenavModule,
     MatDividerModule,
+    ChartModule,
 
     CoreModule,
     DashboardModule,
@@ -127,7 +128,7 @@ const routes: Routes = [
     FinanceiroModule,
     UsuarioModule
   ],
-  providers: [ConfirmationService, {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
+  providers: [ConfirmationService, {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}, JwtHelper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

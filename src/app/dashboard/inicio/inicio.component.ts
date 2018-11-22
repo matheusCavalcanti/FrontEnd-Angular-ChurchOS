@@ -17,13 +17,11 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
     this.carregarPessoas();
-    this.somarPessoas();
-    this.grafico();
   }
 
   constructor(
     private pessoaService: PessoaService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
   ) { }
 
   grafico() {
@@ -33,12 +31,12 @@ export class InicioComponent implements OnInit {
         {
           data: [this.totalHomens, this.totalMulheres],
           backgroundColor: [
-            '#FF6384',
-            '#36A2EB'
+            '#36A2EB',
+            '#FF6384'
           ],
           hoverBackgroundColor: [
-            '#FF6384',
-            '#36A2EB'
+            '#36A2EB',
+            '#FF6384'
           ]
         }]
     };
@@ -48,6 +46,7 @@ export class InicioComponent implements OnInit {
     this.pessoaService.pesquisar()
       .then(pessoas => {
         this.pessoas = pessoas;
+        this.somarPessoas();
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -60,6 +59,7 @@ export class InicioComponent implements OnInit {
         this.totalMulheres = this.totalMulheres + 1;
       }
     }
+    this.grafico();
   }
 
 }

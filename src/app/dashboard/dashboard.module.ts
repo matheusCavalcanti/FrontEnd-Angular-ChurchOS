@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
     TooltipModule,
     FormsModule
   ],
-  declarations: [TelaComponent, InicioComponent, TelaLoginComponent],
-  exports: [TelaComponent, InicioComponent, TelaLoginComponent]
+  declarations: [TelaComponent, InicioComponent],
+  exports: [TelaComponent, InicioComponent]
 })
 export class DashboardModule { }

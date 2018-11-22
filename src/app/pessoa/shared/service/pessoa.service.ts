@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Headers } from '@angular/http';
 import { Pessoa } from '../model/Pessoa.modelo';
+import { AuthHttp } from 'angular2-jwt';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +12,19 @@ export class PessoaService {
   private pessoaUrl = 'http://localhost:8080/pessoas';
 
   constructor(
-    private http: Http
+    private http: AuthHttp
   ) { }
 
   public pesquisar(): Promise<Pessoa[]> {
-    return this.http.get(`${this.pessoaUrl}`)
+    return this.http.get(this.pessoaUrl)
       .toPromise()
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(erro => console.log('Erro no service'));
   }
 
   adicionar(pessoa: Pessoa): Promise<Pessoa> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // console.log(JSON.stringify(musica));
 
     return this.http.post(this.pessoaUrl, 
         JSON.stringify(pessoa), { headers })

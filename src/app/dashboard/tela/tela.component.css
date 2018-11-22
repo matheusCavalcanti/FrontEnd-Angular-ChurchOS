@@ -35,11 +35,21 @@ body, html {
 }
 
 .card {
-    margin-top: 150px;
+    
+    left:50%;
+    transform: translate(-50%,-50%);
+    user-select: none;
 }
 
 .fofura{
-    top:50%;
+    top:20%;
     left:50%;
     transform: translate(-50%,-50%);
+    user-select: none;
+}
+
+.fofura:hover {
+    background-color: rgba(10, 255, 182, 0.65);
+    color: yellow;
+    user-select: none;
 }

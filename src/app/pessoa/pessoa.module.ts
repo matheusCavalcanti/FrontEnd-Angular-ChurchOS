@@ -18,13 +18,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {TooltipModule} from 'primeng/tooltip';
 import { MatTooltipModule, MatListModule, MatDatepickerModule, MatSelectModule, MatRadioModule } from '@angular/material';
 import {DialogModule} from 'primeng/dialog';
+import { PessoaService } from './shared/service/pessoa.service';
 
 @NgModule({
   imports: [
     CommonModule,
+    HttpModule,
     MatTableModule,
     MatInputModule,
-    HttpModule,
     RouterModule,
     BrowserModule,
     MatToolbarModule,
@@ -42,6 +43,7 @@ import {DialogModule} from 'primeng/dialog';
     MatRadioModule
   ],
   declarations: [PesquisarPessoasComponent, CadastrarPessoaComponent],
-  exports: [PesquisarPessoasComponent, CadastrarPessoaComponent]
+  exports: [PesquisarPessoasComponent, CadastrarPessoaComponent],
+  providers: [PessoaService]
 })
 export class PessoaModule { }
