@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Headers } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import { Pessoa } from '../model/Pessoa.modelo';
-import { AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable({
@@ -12,14 +11,13 @@ export class PessoaService {
   private pessoaUrl = 'http://localhost:8080/pessoas';
 
   constructor(
-    private http: AuthHttp
+    private http: Http
   ) { }
 
   public pesquisar(): Promise<Pessoa[]> {
     return this.http.get(this.pessoaUrl)
       .toPromise()
-      .then(response => response.json())
-      .catch(erro => console.log('Erro no service'));
+      .then(response => response.json());
   }
 
   adicionar(pessoa: Pessoa): Promise<Pessoa> {

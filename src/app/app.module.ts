@@ -53,7 +53,9 @@ import { ContribuicaoCadastrarComponent } from './Financeiro/contribuicao/contri
 import { ContribuicaoExcluidaPesquisarComponent } from 
 './Financeiro/contribuicao-excluida/contribuicao-excluida-pesquisar/contribuicao-excluida-pesquisar.component';
 import { ChartModule } from 'primeng/chart';
-import { JwtHelper } from 'angular2-jwt';
+import { AuthService } from './seguranca/auth.service';
+import { SegurancaModule } from './seguranca/seguranca.module';
+import { JwtHelper, AuthModule } from 'angular2-jwt';
 
 const routes: Routes = [
   { path: '', component: TelaComponent },
@@ -116,8 +118,10 @@ const routes: Routes = [
     MatSidenavModule,
     MatDividerModule,
     ChartModule,
+    AuthModule,
 
     CoreModule,
+    SegurancaModule,
     DashboardModule,
     MusicaModule,
     IgrejaModule,
@@ -128,7 +132,11 @@ const routes: Routes = [
     FinanceiroModule,
     UsuarioModule
   ],
-  providers: [ConfirmationService, {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}, JwtHelper],
+  providers: [ConfirmationService,
+     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}, 
+     JwtHelper,
+     AuthService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

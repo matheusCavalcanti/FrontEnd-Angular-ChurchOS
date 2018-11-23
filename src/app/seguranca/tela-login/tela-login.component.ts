@@ -11,18 +11,18 @@ import { Router } from '@angular/router';
 export class TelaLoginComponent {
 
   constructor(
-    private authService: AuthService,
+    private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private router: Router
   ) { }
 
   login(usuario: string, senha: string) {
-    this.authService.login(usuario, senha)
+    this.auth.login(usuario, senha)
       .then(() => {
         this.router.navigate(['/inicio']);
       })
       .catch(erro => {
-        this.errorHandler.handleString(erro, 'Usuário ou senha inválidos!');
+        this.errorHandler.handle(erro);
       });
   }
 

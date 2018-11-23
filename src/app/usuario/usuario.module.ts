@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
+import { UsuarioService } from './usuario.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule
   ],
   declarations: [UsuarioCadastrarComponent],
-  exports: [UsuarioCadastrarComponent]
+  exports: [UsuarioCadastrarComponent],
+  providers: [UsuarioService]
 })
 export class UsuarioModule { }

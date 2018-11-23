@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
-import { Erro } from './Erro.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class ErrorHandlerService {
       msg = errorResponse;
 
     } else if (errorResponse instanceof Response
-        || errorResponse.status >= 400 && errorResponse.status <= 499) {
+        || errorResponse.status >= 401 && errorResponse.status <= 499) {
       let errors;
        msg = 'Ocorreu um erro ao processar a sua solicitação';
 
